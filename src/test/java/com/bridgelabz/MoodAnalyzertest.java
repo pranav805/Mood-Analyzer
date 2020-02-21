@@ -56,7 +56,7 @@ public class MoodAnalyzertest {
 
     //  Default constructor
     @Test
-    public void givenMoodAnalyserDefaultConstructor_WhenProper_ShouldReturnObject() {
+    public void givenMoodAnalyserClass_WhenProper_ShouldReturnObject() {
        MoodAnalyzer moodAnalyzer = MoodAnalyserFactory.createMoodAnalyser();
        Assert.assertEquals(new MoodAnalyzer(), moodAnalyzer);
     }
@@ -64,7 +64,7 @@ public class MoodAnalyzertest {
     @Test
     public void givenMoodAnalyserClass_WhenImproper_ShouldReturnClassNotFoundException() {
         try {
-            MoodAnalyserFactory.createMoodAnalyser("com.bridgelabz.Mood");
+            MoodAnalyserFactory.createMoodAnalyser("com.bridgelabz.MoodAnayzer","I am in happy mood.",String.class);
         } catch (MoodAnalyzerException e) {
            e.printStackTrace();
             Assert.assertEquals(MoodAnalyzerException.ExceptionType.EXCEPTION_CLASS_NOT_FOUND, e.type);
@@ -74,7 +74,7 @@ public class MoodAnalyzertest {
     @Test
     public void givenMoodAnalyserConstructor_WhenImproper_ShouldReturnMethodNotFoundException(){
         try {
-            MoodAnalyserFactory.createMoodAnalyser("com.bridgelabz.MoodAnalyzer");
+            MoodAnalyserFactory.createMoodAnalyser("com.bridgelabz.MoodAnalyzer","I am in happy mood.",Integer.class);
         } catch (MoodAnalyzerException e){
             e.printStackTrace();
             Assert.assertEquals(MoodAnalyzerException.ExceptionType.EXCEPTION_METHOD_NOT_FOUND, e.type);

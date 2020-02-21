@@ -7,11 +7,10 @@ import java.lang.reflect.InvocationTargetException;
 
 public class MoodAnalyserFactory {
 
-    public static MoodAnalyzer createMoodAnalyser(String classname) {
+    public static MoodAnalyzer createMoodAnalyser(String classname, String message, Class stringClass) {
         try {
-
-            Constructor<?> constructor = Class.forName(classname).getConstructor(Integer.class);
-            Object obj = constructor.newInstance(classname);
+            Constructor<?> constructor = Class.forName(classname).getConstructor(stringClass);
+            Object obj = constructor.newInstance(message);
             return (MoodAnalyzer) obj;
         } catch (NoSuchMethodException ex) {
             throw new MoodAnalyzerException("Method not found", MoodAnalyzerException.ExceptionType.EXCEPTION_METHOD_NOT_FOUND);
