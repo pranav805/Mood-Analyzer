@@ -6,13 +6,14 @@ public class MoodAnalyzer {
     private String messege;
 
     public MoodAnalyzer() {
+        messege = "Default";
     }
 
     public MoodAnalyzer(String messege) {
         this.messege = messege;
     }
 
-    public String analyzeMood() throws MoodAnalyzerException {
+    public String analyzeMood() {
         try {
             if (messege.length() == 0){
                 throw new MoodAnalyzerException("please enter valid messege", MoodAnalyzerException.ExceptionType.EXCEPTION_EMPTY);
@@ -26,4 +27,10 @@ public class MoodAnalyzer {
             throw new MoodAnalyzerException("Please enter valid messege", MoodAnalyzerException.ExceptionType.EXCEPTION_NULL);
         }
     }
+    public boolean equals(Object another){
+        if (this.messege.equals(((MoodAnalyzer) another).messege))
+            return true;
+        return false;
+    }
+
 }
