@@ -13,6 +13,11 @@ public class MoodAnalyzer {
         this.messege = messege;
     }
 
+    public String analyseMood(String messege){
+        this.messege=messege;
+        return analyzeMood();
+    }
+
     public String analyzeMood() {
         try {
             if (messege.length() == 0){
